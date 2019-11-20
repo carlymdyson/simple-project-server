@@ -20,12 +20,12 @@ pipeline {
         stage('Build') {
             steps {
 		sh 'mvn package -DskipTests'
-                sh 'docker build -t="carlymdysondocker/simple-project-server:latest" .'
+                sh 'docker build -t="carlymdysondocker/simple-project-server:${VERSION}" .'
                 }
             }
         stage('Deploy') {
             steps {
-		sh 'docker push carlymdysondocker/simple-project-server:latest'
+		sh 'docker push carlymdysondocker/simple-project-server:${VERSION}'
             }
         }
 
